@@ -24,5 +24,6 @@ echo "-------------Generating ${name}.pfx-------------"
 openssl pkcs12 -export -out  ${name}/${name}.pfx -inkey  ${name}/${name}.key -in  ${name}/${name}.crt
 echo "-------------Certification Genrating complete with below Subject and Subject Alternate Name---------------"
 openssl x509 -noout -text -in  ${name}/${name}.crt | grep -A 1 "Subject"
-#Uncomment below to generate jsk along with pfx
-#keytool -importkeystore -srckeystore ${name}.pfx -srcstoretype pkcs12 -destkeystore {$name}.jks -deststoretype JKS
+#Uncomment below 2 lines to generate JKS format
+#echo "-------------Generating ${name}.jks-------------"
+#keytool -importkeystore -srckeystore ${name}/${name}.pfx -srcstoretype pkcs12 -destkeystore ${name}/${name}.jks -deststoretype JKS
